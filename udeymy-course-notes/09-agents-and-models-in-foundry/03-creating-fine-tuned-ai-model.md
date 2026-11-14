@@ -226,3 +226,5 @@ Set(Topic.CleanedAnswer, Substitute(Topic.RawAnswer, "!!!", ""));
 
 * **Dataset Format Requirement:**
 * Fine-tuning datasets in Microsoft Foundry must be supplied in **JSON Lines (`.jsonl`)** format containing serialized chat message role/content structures. Plain `.csv`, `.docx`, or raw `.json` files are not accepted directly for training jobs.
+
+
