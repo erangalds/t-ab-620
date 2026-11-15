@@ -389,6 +389,66 @@
 * When an exam scenario asks the agent to **modify, create, submit, or update records** (CRUD) in an external system, choose **Power Platform Connector → Tool (Action)** or **Agent Flow**—never a Knowledge source.
 
 
+## Q6
+
+![Q6](/question-images/q1-50/q6.png)
+
+### 1. Extracted Question Summary
+
+* **Scenario:** A company uses a supported Power Platform connector to provide real-time access to enterprise records for knowledge grounding in an agent in Microsoft Copilot Studio. To meet business requirements, the knowledge source must:
+* Avoid copying enterprise data into an index.
+* Keep source-system access controls enforced.
+* Access data by calling the system at runtime.
+
+
+* **Question (Drag and Drop):** What should you configure for each requirement? Move the appropriate configurations from the left (`Configurations`) to match the three target rows under `Requirement` (`Knowledge source`) on the right (each configuration may be used once, more than once, or not at all).
+* **Available Configurations (Left Column):**
+* `Use real-time connector.`
+* `Use existing permissions.`
+* `Retrieve data without indexing.`
+* `Add Azure AI Search as a knowledge source.`
+
+
+* **Target Requirements (Right Table — `Knowledge source`):**
+1. `Avoid copying enterprise data into an index.`
+2. `Keep source-system access controls enforced.`
+3. `Access data by calling the system at runtime.`
+
+
+
+---
+
+### 2. Correct Answer
+
+* **Avoid copying enterprise data into an index.:** **Retrieve data without indexing.**
+* **Keep source-system access controls enforced.:** **Use existing permissions.**
+* **Access data by calling the system at runtime.:** **Use real-time connector.**
+
+---
+
+### 4. Official Microsoft Justification
+
+* **Power Platform Connectors as Real-Time Knowledge Sources (`AB-620T00` — Ground agents with enterprise knowledge using connectors and Azure AI Search in Microsoft Copilot Studio / Configure Power Platform connectors as real-time knowledge sources):** Under Microsoft Learn's Copilot Studio knowledge architecture, **Power Platform connector knowledge sources** (such as Dataverse, Salesforce, ServiceNow, and SAP) provide live federated grounding distinct from crawl-based Copilot (Graph) connectors:
+1. **Zero Data Duplication (`Retrieve data without indexing`):** Unlike Copilot connectors or Azure AI Search vector indexes that ingest and store external records inside an index, Power Platform real-time knowledge connectors query external enterprise tables directly on demand without copying or indexing enterprise data into Microsoft 365/Copilot Studio storage.
+2. **End-User Authorization Enforcement (`Use existing permissions`):** When executing queries through a real-time Power Platform connector knowledge source, Copilot Studio authenticates using the signed-in end user's connection credentials, ensuring the source system's native role-based access controls (RBAC), row-level security, and field-level permissions remain strictly enforced.
+3. **Synchronous Runtime Execution (`Use real-time connector`):** Selecting a **real-time connector** instructs Copilot Studio to translate user intent into live queries and call the underlying enterprise system's API synchronously at runtime whenever a user asks a question.
+
+
+
+---
+
+### 5. Distractor Analysis (Why Others Are Wrong)
+
+* **Add Azure AI Search as a knowledge source:** Azure AI Search is an index-based vector/hybrid search service that stores ingested/indexed documents rather than querying live enterprise records at runtime without indexing.
+
+---
+
+### 6. Exam Keyword / Trap Alert
+
+* **Keywords:** *"Avoid copying enterprise data into an index"* = **Retrieve data without indexing**; *"Keep source-system access controls enforced"* = **Use existing permissions**; *"calling the system at runtime"* = **Use real-time connector**.
+* **Trap:** Always distinguish between **Copilot connectors** (which crawl and copy external data into a Microsoft Graph index on a schedule) and **Power Platform real-time knowledge connectors** (which execute live runtime queries without indexing while honoring the caller's existing permissions).
+
+
 ## Q7
 
 ![alt text](/question-images/q1-50/q7.png)
@@ -4536,9 +4596,9 @@
 * **Trap:** In repeated-scenario ("Yes/No") question sets, compare each proposed solution against the *exact task sentence* right before `Solution:`—here, the prompt explicitly asks you to *"configure a custom prompt to meet the formatting requirements"*, making the custom prompt tool the valid solution.
 
 
-## Q66
+## Q67
 
-![Q66](/question-images/q51-100/q66.png)
+![Q66](/question-images/q51-100/q67.png)
 
 ### 1. Extracted Question Summary
 
