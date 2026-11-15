@@ -1415,3 +1415,143 @@ Which implementation method should you use for each scenario? To answer, move th
 * **Trap:** Remember the explicit rule in the question instructions (*"You may use each implementation method once, **more than once**, or not at all"*)—**Use a tool node** is intentionally used **twice** because Copilot Studio invokes agent flows from topics via **Tool** nodes for both reusing existing flow logic and executing backend updates.
 
 
+## Question 66
+
+![Q66](/question-images/q51-100/q66.png)
+
+You need to implement tool usage in topics that meet the Blue Yonder design and governance requirements.
+
+Which implementation method should you use for each requirement? To answer, move the appropriate implementation methods to the correct requirements. You may use each implementation method once, more than once, or not at all. You may need to move the split bar between panes or scroll to view content.
+
+**NOTE:** Each correct selection is worth one point.
+
+---
+
+### Implementation methods
+
+* Add a tool node.
+
+
+* Add an Adaptive Card.
+
+
+* Enable generative orchestration.
+
+
+* Display a static message instead of using a tool.
+
+
+* Add a Question node for the user to choose the tool.
+
+
+
+---
+
+### Tool usage in topics
+
+| Requirement | Implementation method |
+| --- | --- |
+| Let the agent decide when to run a tool based on user input.| [          ] |
+| Run a specific agent flow at a defined step in a topic.| [          ] |
+| Use a connector action to retrieve data during a conversation.| [          ] |
+
+### 1. Extracted Question Summary
+
+* **Case Study Scenario (Blue Yonder Airlines):** You need to implement tool usage in topics that meet Blue Yonder Airlines' design and governance requirements. From the Blue Yonder Airlines case study specifications:
+
+
+* **Integration mechanisms & Platform constraints:** Custom connectors must be used for internal APIs lacking prebuilt connectors, agent flows must be used to encapsulate reusable logic, and all backend logic must be implemented using Copilot Studio's built-in tools and agent flows.
+
+
+
+
+* **Question (Blue Yonder Airlines Case Study — Drag and Drop):** Which implementation method should you use for each requirement? Move the appropriate implementation methods from the left (`Implementation methods`) to match the three target rows under `Requirement` (`Tool usage in topics`) on the right (each implementation method may be used once, more than once, or not at all).
+
+
+* **Available Implementation Methods (Left Column):**
+* `Add a tool node.`
+
+
+* `Add an Adaptive Card.`
+
+
+* `Enable generative orchestration.`
+
+
+* `Display a static message instead of using a tool.`
+
+
+* `Add a Question node for the user to choose the tool.`
+
+
+
+
+* **Target Requirements (Right Table — `Tool usage in topics`):**
+1. `Let the agent decide when to run a tool based on user input.`
+
+
+2. `Run a specific agent flow at a defined step in a topic.`
+
+
+3. `Use a connector action to retrieve data during a conversation.`
+
+
+
+
+
+---
+
+### 2. Correct Answer
+
+* **Let the agent decide when to run a tool based on user input.:** **Enable generative orchestration.**
+
+
+* **Run a specific agent flow at a defined step in a topic.:** **Add a tool node.**
+
+
+* **Use a connector action to retrieve data during a conversation.:** **Add a tool node.**
+
+
+
+---
+
+### 4. Official Microsoft Justification
+
+* **Generative Orchestration vs. Deterministic Topic Tool Nodes (`AB-620T00` / `AB-100` — Orchestrate and extend agents with tools and agent flows in Copilot Studio):** Under Microsoft Learn's official Copilot Studio documentation (*Use generative orchestration* and *Add tools to a topic*), Copilot Studio supports two distinct patterns for invoking tools (connectors, agent flows, custom prompts, and REST actions) depending on whether execution is AI-orchestrated or deterministically authored inside a topic:
+1. **Autonomous Runtime Tool Selection (`Enable generative orchestration`):** When **generative orchestration** is enabled, the Copilot Studio orchestrator dynamically evaluates the user's intent, conversation context, and each registered tool's description and input/output schema to decide automatically when to invoke a tool and extract required inputs from user input.
+
+
+2. **Deterministic Agent Flow Execution (`Add a tool node`):** When an author requires a specific **agent flow** (such as Blue Yonder's reusable rebooking or booking update flow) to execute at an exact step within a structured topic conversation, makers explicitly insert a **Tool** node (`Add a tool`) into the topic authoring canvas.
+
+
+3. **Deterministic Connector Action Execution (`Add a tool node`):** Similarly, invoking a Power Platform **connector action** (such as Blue Yonder's custom connector for the internal Reservation and Ticketing API) at a defined point in a conversation to retrieve enterprise data is implemented by adding a **Tool** node directly in the topic.
+
+
+
+
+
+---
+
+### 5. Distractor Analysis (Why Others Are Wrong)
+
+* **Add an Adaptive Card:** Adaptive Cards render rich interactive UI layouts for collecting or displaying structured user data; they do not execute backend agent flows, connector actions, or autonomous tool orchestration.
+
+
+* **Display a static message instead of using a tool:** Displaying static text fails to retrieve live enterprise data or execute transactional backend processes required by the scenario.
+
+
+* **Add a Question node for the user to choose the tool:** Forcing end users to manually select technical tools via a Question node degrades user experience and contradicts Copilot Studio's generative orchestration model, where the agent autonomously selects the appropriate tool based on user input.
+
+
+
+---
+
+### 6. Exam Keyword / Trap Alert
+
+* **Keywords:** *"Let the agent decide when to run a tool based on user input"* = **Enable generative orchestration**; *"Run a specific agent flow at a defined step"* = **Add a tool node**; *"Use a connector action to retrieve data"* = **Add a tool node**.
+
+
+* **Trap:** Remember that in Copilot Studio, both **agent flows** and **connector actions** are surfaced as **Tools** inside topics—and because the instructions explicitly allow reusing items (*"You may use each implementation method once, **more than once**, or not at all"*), **Add a tool node** is intentionally used **twice**!
+
+
+
