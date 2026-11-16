@@ -513,9 +513,9 @@ Which compliance status should you assign to each configuration decision? To ans
 * **Trap:** Do not assume anonymous access is automatically insecure—always cross-check against the case study's **Authentication / Identity and access** rules, which explicitly allow anonymous access for general public inquiries while strictly prohibiting **shared or builder credentials**.
 
 
-## Question 10
+## Question 25
 
-![Q10](/question-images/q1-50/q10.png)
+![Q25](/question-images-v2/q1-50/25.png)
 
 You need to deploy the Blue Yonder Copilot agent to the public website and Microsoft Teams while ensuring compliance with the company's security and Responsible AI requirements.
 
@@ -624,9 +624,9 @@ E. Publish the agent and then enable Responsible AI filters individually for eac
 
 
 
-## Question 11
+## Question 26
 
-![Q11](/question-images/q1-50/q11.png)
+![Q26](/question-images-v2/q1-50/26.png)
 
 Blue Yonder Airlines must deploy a secure, scalable, and policy-compliant AI agent using Microsoft Copilot Studio. The agent must deliver accurate, helpful, and safe responses across multiple channels, integrate with enterprise systems, and support both anonymous and authenticated users. It must adhere to strict data protection and Responsible AI standards while improving customer service efficiency and satisfaction.
 
