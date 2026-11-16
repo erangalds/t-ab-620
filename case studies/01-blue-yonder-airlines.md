@@ -1,4 +1,4 @@
-# Question: 1
+# Blue Yonder Airlines
 
 **DRAG DROP -**
 
@@ -963,7 +963,7 @@ E. Edit every topic's first message to include the disclaimer.
 
 ## Question 14
 
-Blue Yonder Airlines must deploy a secure, scalable, and policy-compliant AI agent using Microsoft Copilot Studio. The agent must deliver accurate, helpful, and safe responses across multiple channels, integrate with enterprise systems, and support both anonymous and authenticated users. It must adhere to strict data protection and Responsible AI standards while improving customer service efficiency and satisfaction.
+![Q14](/question-images/q1-50/q14.png)
 
 You need to determine which authentication model should be applied to each Blue Yonder Copilot interaction scenario to comply with the company's security and governance requirements.
 
@@ -999,42 +999,11 @@ Which authentication requirement should you apply to each scenario? To answer, m
 | An internal support agent accesses the Copilot agent from Microsoft Teams to look up a loyalty member's profile.| [          ] |
 
 
-## Question 15
-
-![Q15](/question-images/q1-50/q14.png)
-
 You need to determine which authentication model should be applied to each Blue Yonder Copilot interaction scenario to comply with the company's security and governance requirements.
 
 Which authentication requirement should you apply to each scenario? To answer, move the appropriate authentication requirements to the correct user scenarios. You may use each authentication requirement once, more than once, or not at all. You may need to move the split bar between panes or scroll to view content.
 
 **NOTE:** Each correct selection is worth one point.
-
----
-
-### Authentication requirements
-
-* Allow anonymous access.
-
-
-* Require customer sign-in using an account.
-
-
-* Require internal agent sign-in using Microsoft Entra ID.
-
-
-* Use agent author credentials for authenticated data calls.
-
-
-
----
-
-### Authentication requirements (Answer Area)
-
-| User scenario | Authentication requirement |
-| --- | --- |
-| A customer asks, "What is the baggage allowance for international flights?"| [          ] |
-| A customer asks, "Can I review my upcoming trips?"| [          ] |
-| An internal support agent accesses the Copilot agent from Microsoft Teams to look up a loyalty member's profile.| [          ] |
 
 
 

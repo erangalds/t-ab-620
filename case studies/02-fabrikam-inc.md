@@ -1,4 +1,4 @@
-# Question: 35
+# Fabrikam Inc
 
 **Case Study -**
 
@@ -733,6 +733,184 @@ Which configuration should you use for each requirement? To answer, move the app
 
 * **Trap:** Do not confuse UI-level **citations** (which satisfy answer *traceability*) with connection-level **index name** and **endpoint URL** parameters when configuring an Azure AI Search knowledge source.
 
+--- 
+
+## Additional Questions 
+
+---
+
+## Additional Question 1: Service Desk Agent Collaboration
+
+### Question Prompt
+
+You are part of the engineering team responsible for correcting the design and configuration to meet the preceding requirements and constraints.
+
+You need to enable collaboration requirements for Operations Concierge.
+
+Which two actions should you perform? Each correct answer presents part of the solution.
+
+**Options:**
+
+* **A.** Enable allow connections from other agents on the Service Desk Agent.
+* **B.** Replace the Service Desk Agent with an MCP server.
+* **C.** Publish Operations Concierge to enable delegation automatically.
+* **D.** Add the Service Desk Agent as an indexed knowledge source.
+* **E.** Publish the Service Desk Agent.
+
+### Correct Answer
+
+* **A. Enable allow connections from other agents on the Service Desk Agent.**
+* **E. Publish the Service Desk Agent.**
+
+### Official Microsoft Justification
+
+* **Multi-Agent Delegation in Copilot Studio (`AB-620T00` — Configure multi-agent collaboration from Copilot Studio > Integrate an existing agent in Copilot Studio):** For a primary Copilot Studio agent (`Operations Concierge`) to delegate IT ticket creation requests to another existing Copilot Studio agent (`Service Desk Agent`) in the same environment, two prerequisites are required on the child/specialist agent:
+1. **Cross-Agent Connection Permission (`A`):** In the **Service Desk Agent's** settings, you must explicitly turn on **Let other agents connect to and use this one** (*allow connections from other agents*).
+2. **Published Runtime State (`E`):** A child Copilot Studio agent must be **published** before a primary orchestrator agent can discover, connect to, and invoke it at runtime (and any future updates to the child agent must be republished to take effect).
 
 
+* **Why Others Are Wrong:** Replacing the agent with an MCP server (**B**) violates the requirement to reuse the existing Service Desk Agent; publishing only the primary agent (**C**) does not expose the child agent; and an agent is an active conversational orchestrator rather than a static knowledge source (**D**).
+
+---
+
+## Additional Question 2: Multi-Agent Architecture Design
+
+### Question Prompt
+
+You need to design a solution that provides Fabrikam Inc. with a multi-agent design approach with existing agents.
+
+Which approach should you use for each requirement? To answer, move the appropriate approaches to the correct requirements. You may use each approach once, more than once, or not at all.
+
+**Available Approaches:**
+
+* `Delegate to a knowledge-focused agent.`
+* `Delegate to a data-access agent.`
+* `Delegate to a tools-first agent.`
+* `Consolidate all capabilities into a single monolithic agent.`
+
+**Target Requirements:**
+
+| Requirement | Approach |
+| --- | --- |
+| Policy questions | **[          ]** |
+| Metric requirements | **[          ]** |
+| Transaction requirements | **[          ]** |
+
+### Correct Answer
+
+* **Policy questions:** **Delegate to a knowledge-focused agent.**
+* **Metric requirements:** **Delegate to a data-access agent.**
+* **Transaction requirements:** **Delegate to a tools-first agent.**
+
+### Official Microsoft Justification
+
+* **Multi-Agent Specialization Patterns (`AB-620T00` — Configure multi-agent collaboration from Copilot Studio > Design multi-agent solutions in Copilot Studio):** Separating distinct operational domains into specialized agents prevents tool/knowledge routing collisions and lets teams maintain each capability independently:
+1. **Policy questions → Knowledge-focused agent:** Unstructured policy and SOP lookups rely on indexed retrieval (Azure AI Search) with citation grounding.
+2. **Metric requirements → Data-access agent:** Analytical KPI queries (backlog, SLA risk, parts shortages, dispatch delays) map to the **Microsoft Fabric Data Agent**, which queries the governed Fabric semantic model.
+3. **Transaction requirements → Tools-first agent:** Authenticated state-changing operations (such as creating a parts request or updating a service case) require deterministic tool execution via MCP servers or connectors.
+
+
+
+---
+
+## Additional Question 3: Generative Answers & Grounding Configuration
+
+### Question Prompt
+
+You need to configure generative answers so the agent meets Fabrikam Inc.'s business requirements.
+
+Which solutions should you use? To answer, move the appropriate solutions to the correct requirements. You may use each solution once, more than once, or not at all.
+
+**Available Solutions:**
+
+* `Instruct the agent to cite sources in knowledge settings.`
+* `Configure Azure AI Search as the grounding data source.`
+* `Select a model from the Foundry model catalog.`
+* `Enable general AI knowledge fallback.`
+
+**Target Requirements:**
+
+| Requirement | Solution |
+| --- | --- |
+| Trace each answer to its source | **[          ]** |
+| Retrieve from the centralized index | **[          ]** |
+| Use an enterprise-approved foundation model | **[          ]** |
+
+### Correct Answer
+
+* **Trace each answer to its source:** **Instruct the agent to cite sources in knowledge settings.**
+* **Retrieve from the centralized index:** **Configure Azure AI Search as the grounding data source.**
+* **Use an enterprise-approved foundation model:** **Select a model from the Foundry model catalog.**
+
+### Official Microsoft Justification
+
+* **Grounded Generative Answers & Model Governance (`AB-620T00` — Integrate agents with Azure > Configure generative answers by using Azure AI Search with Foundry):**
+1. **Traceability (`Instruct the agent to cite sources in knowledge settings`):** Satisfies Fabrikam's *Traceability requirement* by ensuring responses return verifiable citations pointing back to the retrieved policy documents.
+2. **Indexed Retrieval (`Configure Azure AI Search as the grounding data source`):** Connects the agent to Fabrikam's centralized vector-indexed policy library in Azure AI Search rather than relying on ungrounded model weights.
+3. **Model Selection (`Select a model from the Foundry model catalog`):** Binds generative orchestration/prompts to a central AI team-approved foundation model hosted in Microsoft Foundry.
+
+
+
+---
+
+## Additional Question 4: Onboarding MCP Servers & Authentication Settings
+
+### Question Prompt
+
+You need to add Fabrikam Inc.'s MCP servers as a tool so the agent can perform the required operations during conversations.
+
+Which setting should you configure for each requirement? To answer, move the appropriate settings to the correct requirements. You may use each setting once, more than once, or not at all.
+
+**Available Settings:**
+
+* `OAuth 2.0 (per-user authentication)`
+* `API key (shared team authentication)`
+* `Anonymous (no authentication)`
+* `Service principal (app-only authentication)`
+
+**Target Requirements:**
+
+| Requirement | Setting |
+| --- | --- |
+| PartsOps MCP server (per-user authentication so actions are traceable to the requesting user) | **[          ]** |
+| WarrantyRules MCP server (read-only tool using a key shared by the agent team) | **[          ]** |
+
+### Correct Answer
+
+* **PartsOps MCP server:** **OAuth 2.0 (per-user authentication)**
+* **WarrantyRules MCP server:** **API key (shared team authentication)**
+
+### Official Microsoft Justification
+
+* **Configuring Model Context Protocol (MCP) Tools in Copilot Studio (`AB-620T00` — Add tools to agents > Configure MCP tools):** When onboarding external MCP servers as tools in Copilot Studio, authentication is configured per MCP connection to match the server's security contract:
+1. **Per-User Identity Delegation (`OAuth 2.0`):** Because `PartsOps` executes state-changing transactions (creating parts requests) that must be audited and attributed to the individual technician or coordinator, **OAuth 2.0** user-level authentication passes the signed-in user's token context.
+2. **Shared Credential Authentication (`API key`):** Because `WarrantyRules` exposes a read-only warranty check protected by a static key issued to the engineering team, **API key** authentication stores the shared secret securely in the connection configuration.
+
+
+
+---
+
+## Additional Question 5: Handling Performance & Operational Metrics
+
+### Question Prompt
+
+You need to ensure that performance-related questions are handled in accordance with Fabrikam Inc.'s defined architecture and business requirements.
+
+Which capability should Operations Concierge use?
+
+**Options:**
+
+* **A.** A Foundry agent configured for summarization and classification.
+* **B.** A data agent integrated into the multi-agent solution.
+* **C.** An MCP server tool that executes transactional operations.
+* **D.** An Azure AI Search knowledge source configured for enterprise policy retrieval.
+
+### Correct Answer
+
+* **B. A data agent integrated into the multi-agent solution.**
+
+### Official Microsoft Justification
+
+* **Microsoft Fabric Data Agent Integration (`AB-620T00` — Configure multi-agent collaboration from Copilot Studio > Integrate a Fabric data agent):** Under Fabrikam's *Metrics requirement* and *Technical requirements*, operational KPIs (backlog, SLA risk, parts shortages, dispatch delays) live in a governed **Microsoft Fabric semantic model**. Integrating the **Microsoft Fabric Data Agent** into `Operations Concierge` ensures performance questions are routed to a specialist data agent that translates natural language into governed queries against the Fabric semantic model (preserving DAX measures, relationships, and row-level security) rather than hallucinating generative answers.
+* **Why Others Are Wrong:** The Foundry agent (**A**) is scoped strictly to long-form text summarization/classification; MCP servers (**C**) handle parts/warranty transactions; and Azure AI Search (**D**) indexes static policy documents rather than live Fabric metrics.
 
