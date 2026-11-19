@@ -3372,3 +3372,740 @@
 ## Q100
 ![Q100](/question-images-v2/q51-100/100.png)
 
+
+## Q101
+![Q101](/question-images-v2/q101-150/101.png)
+
+
+## Q102
+![Q102](/question-images-v2/q101-150/102.png)
+
+
+## Q103
+![Q103](/question-images-v2/q101-150/103.png)
+
+
+## Q104
+![Q104](/question-images-v2/q101-150/104.png)
+
+
+## Q105
+![Q105](/question-images-v2/q101-150/105.png)
+
+
+## Q106
+![Q106](/question-images-v2/q101-150/106.png)
+
+
+## Q107
+![Q107](/question-images-v2/q101-150/107.png)
+
+
+## Q108
+![Q108](/question-images-v2/q101-150/108.png)
+
+
+## Q109
+![Q109](/question-images-v2/q101-150/109.png)
+
+
+## Q110
+![Q110](/question-images-v2/q101-150/110.png)
+
+
+## Q111
+![Q111](/question-images-v2/q101-150/111.png)
+
+
+## Q112
+![Q112](/question-images-v2/q101-150/112.png)
+
+
+## Q113
+![Q113](/question-images-v2/q101-150/113.png)
+
+
+### 1. Extracted Question Summary
+
+* **Scenario (Question 113 — Drag and Drop):** A company is building an agent that uses an agent flow to retrieve data from an external system and return structured output. The flow must meet four requirements:
+
+
+* Accept parameters from the agent.
+
+
+* Execute an action to retrieve data from the database.
+
+
+* Ensure the agent receives the relevant output information.
+
+
+* Validate before it is used by the agent.
+
+
+
+
+* **Task:** Move all five actions from the list to the answer area and arrange them in the exact chronological creation sequence:
+
+
+* Add the connector action and configure the connection.
+
+
+* Create a new agent flow.
+
+
+* Define output values for the flow.
+
+
+* Test the flow run.
+
+
+* Define input values for the flow.
+
+
+
+
+
+---
+
+### 2. Correct Answer
+
+1. **Create a new agent flow.**
+
+
+2. **Define input values for the flow.**
+
+
+3. **Add the connector action and configure the connection.**
+
+
+4. **Define output values for the flow.**
+
+
+5. **Test the flow run.**
+
+
+
+---
+
+### 4. Official Microsoft Justification
+
+* **Agent Flow Authoring Sequence (AB-620T00):** Per Microsoft Copilot Studio documentation (*Build agent flows / Extend Microsoft Copilot Studio agents with tools and flows* under `[https://learn.microsoft.com/en-us/training/courses/ab-620t00](https://learn.microsoft.com/en-us/training/courses/ab-620t00)`), creating an agent-invoked flow follows a strict top-down data dependency pipeline:
+1. **Initialize the Flow Artifact:** Create a new agent flow inside Copilot Studio (which scaffolds the default *"When an agent calls the flow"* trigger and *"Respond to the agent"* terminal action).
+
+
+2. **Configure Trigger Inputs:** Define the input parameters on the trigger step so the agent can pass runtime arguments into the flow.
+
+
+3. **Add Data Retrieval Actions:** Insert the database/external connector action, authenticate its connection, and bind the trigger's input parameters into the query/operation.
+
+
+4. **Configure Response Outputs:** Map the retrieved connector results into structured output parameters on the **"Respond to the agent"** action so the agent receives the structured payload.
+
+
+5. **Validate Execution:** Execute a test run of the flow with sample inputs to validate end-to-end connectivity and output schema before publishing and attaching it to the agent.
+
+
+
+
+
+---
+
+### 5. Distractor Analysis (Why Others Are Wrong)
+
+* Because this is an **ordered sequence** question utilizing all five items, there are no unused distractors; the primary ordering traps are adding the connector action before defining the trigger's **input values** (which the connector action depends on), or defining **output values** before the connector action exists to supply the retrieved data.
+
+
+
+---
+
+### 6. Exam Keyword / Trap Alert
+
+* **Keyword Alert:** Follow the natural top-to-bottom data pipeline of an agent flow: **Create Flow → Trigger Inputs → Intermediate Connector Action → Response Outputs → Test Run**. *(Note: Also remember to change `AB - 100` to `AB - 620` in line 2 of your pasted Gem instructions if you're updating your AB-620 Gem!)*
+
+
+## Q114
+![Q114](/question-images-v2/q101-150/114.png)
+
+
+### 1. Extracted Question Summary
+
+* **Scenario (Question 114 — Drag and Drop):** A company is integrating a Copilot Studio agent into a custom application using the **Microsoft 365 Agents SDK**. The project requirements specify a strict dependency-driven deployment sequence:
+
+
+* The agent must be published before configuration values are retrieved.
+
+
+* End-to-end validation must occur before production deployment.
+
+
+
+
+* **Task:** Select **four** actions from the list of six deployment workflow steps and arrange them in the exact chronological sequence in the Answer Area:
+
+
+* Register a new application in Microsoft Entra ID.
+
+
+* Configure and enable the agent's target integration channel.
+
+
+* Validate the end-to-end conversation workflow in a test environment.
+
+
+* Publish the agent.
+
+
+* Retrieve current agent configuration values.
+
+
+* Implement the Microsoft 365 Agents SDK in the custom app by using the retrieved configuration.
+
+
+
+
+
+---
+
+### 2. Correct Answer
+
+1. **Publish the agent.**
+
+
+2. **Retrieve current agent configuration values.**
+
+
+3. **Implement the Microsoft 365 Agents SDK in the custom app by using the retrieved configuration.**
+
+
+4. **Validate the end-to-end conversation workflow in a test environment.**
+
+
+
+---
+
+### 4. Official Microsoft Justification
+
+* **Integrating Copilot Studio Agents with the Microsoft 365 Agents SDK (AB-620T00):** Per Microsoft Copilot Studio documentation (*Integrate an agent with a custom application using the Microsoft 365 Agents SDK* under `[https://learn.microsoft.com/en-us/training/courses/ab-620t00](https://learn.microsoft.com/en-us/training/courses/ab-620t00)`), connecting a custom client application to a Copilot Studio agent via the Microsoft 365 Agents SDK (`CopilotStudioClient`) requires retrieving the published agent's connection parameters (such as Environment ID, Schema Name, Tenant ID, and App Client ID) from Copilot Studio's **Channels / Connection Settings** pane:
+1. **Publish First:** An agent must be **published** before its runtime endpoints and metadata identifiers become active and retrievable for external SDK consumption.
+
+
+2. **Retrieve Connection Metadata:** Once published, you **retrieve the current agent configuration values** (Environment ID, Agent Schema Name / Direct Connect URL) from the Copilot Studio channel/settings blade.
+
+
+3. **Wire Up the SDK Client:** You then **implement the Microsoft 365 Agents SDK in the custom app** using those retrieved configuration values to initialize the client and exchange activity turns.
+
+
+4. **End-to-End Validation:** Finally, per the explicit project constraint, you **validate the end-to-end conversation workflow in a test environment** before rolling out to production.
+
+
+
+
+
+---
+
+### 5. Distractor Analysis (Why Others Are Wrong)
+
+* **Register a new application in Microsoft Entra ID:** While Entra ID app registration is used when setting up custom OAuth authentication in Azure/Entra, this 4-step sequence specifically tests the Copilot Studio-to-SDK dependency chain dictated by the prompt's two explicit rules (*"publish before retrieving configuration values"* and *"end-to-end validation before production"*).
+
+
+* **Configure and enable the agent's target integration channel:** Connecting via the Microsoft 365 Agents SDK uses the agent's direct SDK connection settings after publishing rather than enabling a standalone prebuilt channel (like Teams or Slack) as a prerequisite step.
+
+
+
+---
+
+### 6. Exam Keyword / Trap Alert
+
+* **Keyword Alert:** Let the prompt's explicit dependency constraints guide your 4-step selection: **"Publish before retrieving configuration values"** locks Steps 1 & 2 (**Publish → Retrieve configuration**), followed directly by **Implement SDK using retrieved configuration → Validate in a test environment**. *(Note: Line 2 of your updated Gem Instructions still has `AB - 100` instead of `AB - 620`—be sure to change `100` to `620` in your Gem settings!)*
+
+
+## Q115
+
+![Q115](/question-images-v2/q101-150/115.png)
+
+
+### 1. Extracted Question Summary
+
+* **Scenario (Question 115 — Hotspot):** A company is deploying a Copilot Studio agent that uses generative responses. During pilot testing, some responses are blocked by Responsible AI filtering. The company has Azure Application Insights enabled and needs to configure Responsible AI safeguards and diagnostics:
+
+
+* **Requirement 1:** Block unsafe content before responses are returned.
+
+
+* *Options:* Disable generative responses in the agent | Increase the context length to improve answer completeness | Configure the content filtering level for AI-generated content.
+
+
+
+
+* **Requirement 2:** Identify why a response was filtered.
+
+
+* *Options:* Review Azure Application Insights telemetry | Move the agent to a different environment region | Review topic trigger phrases to reduce fallback usage.
+
+
+
+
+* **Requirement 3:** Determine which user input triggered the filter.
+
+
+* *Options:* Review publishing history | Check connector run history | Review conversation transcripts.
+
+
+
+
+
+
+
+---
+
+### 2. Correct Answer
+
+* Block unsafe content before responses are returned: **Configure the content filtering level for AI-generated content.**
+
+
+* Identify why a response was filtered: **Review Azure Application Insights telemetry.**
+
+
+* Determine which user input triggered the filter: **Review conversation transcripts.**
+
+
+
+---
+
+### 4. Official Microsoft Justification
+
+* **Responsible AI Content Moderation & Telemetry in Copilot Studio (AB-620T00):** Per Microsoft Copilot Studio documentation (*Configure content moderation / Monitor agent telemetry with Azure Application Insights* under `[https://learn.microsoft.com/en-us/training/courses/ab-620t00](https://learn.microsoft.com/en-us/training/courses/ab-620t00)`), Copilot Studio enforces multi-layered Responsible AI safeguards across user prompts and generated answers:
+* **Content Moderation / Filtering Level:** Makers configure the **content moderation (content filtering) level** (*Low*, *Medium*, or *High*) under the agent's **Settings → Generative AI** blade to evaluate both incoming user prompts and model-generated responses against harmful content categories (hate, self-harm, sexual, violence) and block unsafe content before returning a response to the user.
+
+
+* **Filter Reason Diagnostics via Azure Application Insights:** When Application Insights is linked to an agent, Copilot Studio emits detailed custom telemetry events (such as `GenerativeAnswers` and content-moderation/filtering diagnostic properties) that allow administrators to inspect the exact policy category or moderation reason code explaining *why* a response was blocked.
+
+
+* **Turn-by-Turn User Input Inspection via Conversation Transcripts:** Stored in Dataverse (`ConversationTranscript` table) and accessible via Copilot Studio's **Analytics / Sessions** blade, **conversation transcripts** record the verbatim chronological dialogue turns—allowing makers to see the exact user utterance/prompt that immediately preceded and triggered the moderation block.
+
+
+
+
+
+---
+
+### 5. Distractor Analysis (Why Others Are Wrong)
+
+* **Requirement 1 Distractors:**
+* *Disable generative responses in the agent:* Turns off generative AI capabilities completely rather than configuring Responsible AI filtering thresholds.
+
+
+* *Increase the context length to improve answer completeness:* Does not exist as a Responsible AI safety control and does not filter harmful content.
+
+
+
+
+* **Requirement 2 Distractors:**
+* *Move the agent to a different environment region:* Data residency/region settings have no bearing on diagnosing Responsible AI moderation reasons.
+
+
+* *Review topic trigger phrases to reduce fallback usage:* Addresses classic NLU topic routing/fallback rates, not generative content moderation diagnostics.
+
+
+
+
+* **Requirement 3 Distractors:**
+* *Review publishing history:* Tracks when agent versions were published, not end-user conversation turns.
+
+
+* *Check connector run history:* Logs Power Platform connector/flow API executions rather than user chat utterances.
+
+
+
+
+
+---
+
+### 6. Exam Keyword / Trap Alert
+
+* **Keyword Alert:** Separate **"why a response was filtered"** (diagnostic telemetry → **Azure Application Insights**) from **"which user input triggered the filter"** (verbatim dialogue turn → **Conversation transcripts**), and remember that Responsible AI safety thresholds are controlled by the **content filtering / moderation level**. *(Note: Line 2 of your updated Gem Instructions still has `AB - 100` instead of `AB - 620`—be sure to change `100` to `620` in your Gem settings!)*
+
+
+## Q116
+![Q116](/question-images-v2/q101-150/116.png)
+
+
+
+## Q123
+![Q123](/question-images-v2/q101-150/123.png)
+
+
+## Q124
+![Q124](/question-images-v2/q101-150/124.png)
+
+
+## Q125
+![Q125](/question-images-v2/q101-150/125.png)
+
+
+## Q126
+![Q126](/question-images-v2/q101-150/126.png)
+
+
+## Q127
+![Q127](/question-images-v2/q101-150/127.png)
+
+
+## Q128
+![Q128](/question-images-v2/q101-150/128.png)
+
+
+## Q129
+![Q129](/question-images-v2/q101-150/129.png)
+
+
+## Q130
+![Q130](/question-images-v2/q101-150/130.png)
+
+
+## Q131
+![Q131](/question-images-v2/q101-150/131.png)
+
+
+## Q132
+![Q132](/question-images-v2/q101-150/132.png)
+
+
+## Q133
+![Q133](/question-images-v2/q101-150/133.png)
+
+
+
+## Q134
+![Q134](/question-images-v2/q101-150/134.png)
+
+
+## Q135
+![Q135](/question-images-v2/q101-150/135.png)
+
+
+## Q136
+![Q136](/question-images-v2/q101-150/136.png)
+
+
+## Q137
+![Q137](/question-images-v2/q101-150/137.png)
+
+
+## Q138
+![Q138](/question-images-v2/q101-150/138.png)
+
+
+## Q139
+![Q139](/question-images-v2/q101-150/139.png)
+
+
+## Q140
+![Q140](/question-images-v2/q101-150/140.png)
+
+
+## Q141
+![Q141](/question-images-v2/q101-150/141.png)
+
+
+## Q142
+![Q142](/question-images-v2/q101-150/142.png)
+
+
+## Q143
+![Q143](/question-images-v2/q101-150/143.png)
+
+
+## Q144
+![Q144](/question-images-v2/q101-150/144.png)
+
+
+## Q145
+![Q145](/question-images-v2/q101-150/145.png)
+
+
+## Q146
+![Q146](/question-images-v2/q101-150/146.png)
+
+
+## Q147
+![Q147](/question-images-v2/q101-150/147.png)
+
+
+## Q148
+![Q148](/question-images-v2/q101-150/148.png)
+
+
+## Q149
+![Q149](/question-images-v2/q101-150/149.png)
+
+### 1. Extracted Question Summary
+
+* **Scenario (Question 149):** A team has an existing agent in Copilot Studio and must move it to a different target location without rebuilding the agent. Some builders use Copilot Studio in the web app, while others use Copilot Studio in Microsoft Teams. You need a supported ALM approach to move the existing agent to the target location without rebuilding it.
+
+
+* **Options:**
+* **A.** Remove agent components directly from the solution so that export and import will succeed.
+
+
+* **B.** Configure pipeline settings first and rely on pipelines to discover and package the agent automatically without adding it to a solution.
+
+
+* **C.** If the agent is built and managed in Copilot Studio in Teams, export the agent from the source team and import it into the target team using the Teams-based export/import approach.
+
+
+* **D.** Duplicate the agent in the source and manually recreate the changes in the target to avoid solution dependencies.
+
+
+
+
+
+---
+
+### 2. Correct Answer
+
+* **C: If the agent is built and managed in Copilot Studio in Teams, export the agent from the source team and import it into the target team using the Teams-based export/import approach.**
+
+
+
+---
+
+### 3. Verification of Visible Selection / Community Key
+
+* **Correct:** The bottom key (`Answer: C`) is **Correct** because Microsoft Copilot Studio distinguishes between web-app agents (moved via Power Platform solutions across environments) and Dataverse for Teams agents (moved between Microsoft Teams teams using the dedicated Teams-based export/import package mechanism).
+
+
+
+---
+
+### 4. Official Microsoft Justification
+
+* **Application Lifecycle Management (ALM) Across Copilot Studio Web vs. Teams (AB-620T00):** Per Microsoft Copilot Studio documentation (*Export and import agents using solutions / Export and import bots in Microsoft Teams* under `[https://learn.microsoft.com/en-us/training/courses/ab-620t00](https://learn.microsoft.com/en-us/training/courses/ab-620t00)`), moving an existing agent without rebuilding depends on where the agent is hosted:
+* **Copilot Studio in Microsoft Teams (Dataverse for Teams):** Agents built inside the Copilot Studio Teams app live inside a team-scoped Dataverse for Teams environment rather than a full standalone Power Platform environment. To move such an agent to another team without rebuilding, makers use the supported **Teams-based export/import** workflow (exporting the agent package from the source team and importing it into the target team).
+
+
+* **Copilot Studio Web App (Standard Dataverse Environments):** Web-app agents are packaged inside a **custom Power Platform solution** (along with their dependent flows, environment variables, and connection references) and exported/imported across environments.
+
+
+
+
+
+---
+
+### 5. Distractor Analysis (Why Others Are Wrong)
+
+* **A. Remove agent components directly from the solution so that export and import will succeed:** Stripping dependent components (such as topics, tools, or flows) from a solution breaks the agent or omits required functionality during import.
+
+
+* **B. Configure pipeline settings first and rely on pipelines to discover and package the agent automatically without adding it to a solution:** Power Platform Pipelines deploy **solutions**—they cannot discover or deploy standalone agents that have not been added to a solution.
+
+
+* **D. Duplicate the agent in the source and manually recreate the changes in the target to avoid solution dependencies:** Explicitly violates the core business requirement to *"avoid rebuilding the agent"*.
+
+
+
+---
+
+### 6. Exam Keyword / Trap Alert
+
+* **Keyword Alert:** Pay close attention when a question mentions both **Copilot Studio in the web app** and **Copilot Studio in Microsoft Teams**—Teams-hosted agents cannot be moved with standard cross-environment Power Platform solutions and must use the **Teams-based export/import approach** between source and target teams. *(Quick reminder: Line 2 of your updated Gem Instructions still says `AB - 100`—update that to `AB - 620` whenever you edit your Gem!)*
+
+
+## Q150
+![Q150](/question-images-v2/q101-150/150.png)
+
+
+## Q151
+![Q151](/question-images-v2/q151-200/151.png)
+
+
+
+## Q152
+![Q152](/question-images-v2/q151-200/152.png)
+
+
+
+## Q153
+![Q153](/question-images-v2/q151-200/153.png)
+
+
+
+## Q154
+![Q154](/question-images-v2/q151-200/154.png)
+
+### 1. Extracted Question Summary
+
+* **Scenario (Question 154 — Drag and Drop):** A team has deployed an agent in Copilot Studio and needs to evaluate whether the agent is meeting its intended goals before expanding usage to a broader audience. The team must evaluate agent performance using a structured and repeatable approach that produces actionable insights.
+
+
+* **Task:** Move all four actions from the **Agent performance evaluation sequence** list to the **Answer Area** and arrange them in the exact chronological order:
+
+
+* Collect agent interaction data and evaluation signals.
+
+
+* Define the success criteria and evaluation objectives.
+
+
+* Select the evaluation method and metrics aligned to the criteria.
+
+
+* Review evaluation results and identify improvement opportunities.
+
+
+
+
+
+---
+
+### 2. Correct Answer
+
+1. **Define the success criteria and evaluation objectives.**
+
+
+2. **Select the evaluation method and metrics aligned to the criteria.**
+
+
+3. **Collect agent interaction data and evaluation signals.**
+
+
+4. **Review evaluation results and identify improvement opportunities.**
+
+
+
+---
+
+### 4. Official Microsoft Justification
+
+* **Structured Agent Evaluation Lifecycle in Copilot Studio (AB-620T00):** Per Microsoft Copilot Studio documentation (*Evaluate your agent / Monitor and improve agent performance* under `[https://learn.microsoft.com/en-us/training/courses/ab-620t00](https://learn.microsoft.com/en-us/training/courses/ab-620t00)`), evaluating an agent systematically before scaling adoption follows a four-stage measurement lifecycle:
+1. **Define Objectives & Success Criteria:** Establish what "success" looks like for the agent's business goals (such as target containment/resolution rate, response accuracy thresholds, or task completion) before choosing tools or collecting data.
+
+
+2. **Select Evaluation Methods & Metrics:** Choose the appropriate evaluation framework (e.g., automated test sets with semantic grading, Analytics engagement/outcome metrics, or CSAT surveys) and specific KPIs directly aligned to those success criteria.
+
+
+3. **Collect Interaction Data & Signals:** Execute test runs or capture pilot session telemetry, transcripts, and evaluation scores to gather empirical evidence.
+
+
+4. **Review Results & Iterate:** Analyze the evaluation scores, failure patterns, and deflection/abandonment signals to pinpoint knowledge gaps, prompt refinements, or tool routing fixes before expanding access.
+
+
+
+
+
+---
+
+### 5. Distractor Analysis (Why Others Are Wrong)
+
+* Because this is an **ordered sequence** question utilizing all four items, there are no unused distractors; the primary ordering trap is jumping straight to **collecting interaction data** or **selecting metrics** before first defining the **success criteria and evaluation objectives** that govern what needs to be measured.
+
+
+
+---
+
+### 6. Exam Keyword / Trap Alert
+
+* **Keyword Alert:** Memorize the classic 4-step performance evaluation lifecycle: **Define Criteria/Objectives → Select Method/Metrics → Collect Data/Signals → Review Results & Identify Improvements**. *(Also note: Line 2 of your pasted Gem instructions still says `AB - 100`—update that to `AB - 620` if you are saving this into your AB-620 Gem!)*
+
+
+
+## Q155
+![Q155](/question-images-v2/q151-200/155.png)
+
+
+## Q156
+![Q156](/question-images-v2/q151-200/156.png)
+
+
+
+## Q157
+![Q157](/question-images-v2/q151-200/157.png)
+
+
+
+## Q158
+![Q158](/question-images-v2/q151-200/158.png)
+
+
+## Q159
+![Q159](/question-images-v2/q151-200/159.png) 
+
+
+## Q160
+![Q160](/question-images-v2/q151-200/160.png)
+
+
+## Q161
+![Q161](/question-images-v2/q151-200/161.png)
+
+
+## Q162
+![Q162](/question-images-v2/q151-200/162.png)
+
+
+## Q163
+![Q163](/question-images-v2/q151-200/163.png)
+
+
+## Q164
+![Q164](/question-images-v2/q151-200/164.png)
+
+
+## Q165
+![Q165](/question-images-v2/q151-200/165.png)
+
+
+## Q166
+![Q166](/question-images-v2/q151-200/166.png)
+
+## Q167
+![Q167](/question-images-v2/q151-200/167.png)
+
+
+## Q168
+![Q168](/question-images-v2/q151-200/168.png)
+
+
+## Q169
+![Q169](/question-images-v2/q151-200/169.png)
+
+
+## Q170
+![Q170](/question-images-v2/q151-200/170.png)
+
+
+## Q171
+![Q171](/question-images-v2/q151-200/171.png)
+
+
+## Q172
+![Q172](/question-images-v2/q151-200/172.png)
+
+
+## Q173
+![Q173](/question-images-v2/q151-200/173.png)
+
+
+## Q174
+![Q174](/question-images-v2/q151-200/174.png)
+
+
+## Q175
+![Q175](/question-images-v2/q151-200/175.png)
+
+
+## Q176
+![Q176](/question-images-v2/q151-200/176.png)
+
+
+## Q177
+![Q177](/question-images-v2/q151-200/177.png)
+
+
+## Q178
+![Q178](/question-images-v2/q151-200/178.png)
+
+
+## Q179
+![Q179](/question-images-v2/q151-200/179.png)
+

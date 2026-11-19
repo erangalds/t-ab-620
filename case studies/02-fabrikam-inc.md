@@ -741,6 +741,8 @@ Which configuration should you use for each requirement? To answer, move the app
 
 ## Additional Question 1: Service Desk Agent Collaboration
 
+![Q120](/question-images-v2/q101-150/120.png)
+
 ### Question Prompt
 
 You are part of the engineering team responsible for correcting the design and configuration to meet the preceding requirements and constraints.
@@ -775,7 +777,10 @@ Which two actions should you perform? Each correct answer presents part of the s
 
 ## Additional Question 2: Multi-Agent Architecture Design
 
+![Q117](/question-images-v2/q101-150/117.png)
+
 ### Question Prompt
+
 
 You need to design a solution that provides Fabrikam Inc. with a multi-agent design approach with existing agents.
 
@@ -814,6 +819,8 @@ Which approach should you use for each requirement? To answer, move the appropri
 ---
 
 ## Additional Question 3: Generative Answers & Grounding Configuration
+
+![Q118](/question-images-v2/q101-150/118.png)
 
 ### Question Prompt
 
@@ -855,6 +862,8 @@ Which solutions should you use? To answer, move the appropriate solutions to the
 
 ## Additional Question 4: Onboarding MCP Servers & Authentication Settings
 
+![Q121](/question-images-v2/q101-150/121.png)
+
 ### Question Prompt
 
 You need to add Fabrikam Inc.'s MCP servers as a tool so the agent can perform the required operations during conversations.
@@ -886,11 +895,101 @@ Which setting should you configure for each requirement? To answer, move the app
 1. **Per-User Identity Delegation (`OAuth 2.0`):** Because `PartsOps` executes state-changing transactions (creating parts requests) that must be audited and attributed to the individual technician or coordinator, **OAuth 2.0** user-level authentication passes the signed-in user's token context.
 2. **Shared Credential Authentication (`API key`):** Because `WarrantyRules` exposes a read-only warranty check protected by a static key issued to the engineering team, **API key** authentication stores the shared secret securely in the connection configuration.
 
+### 1. Extracted Question Summary
+
+* **Case Study Scenario (Question 121 — Drag and Drop):** Fabrikam Inc. is building an internal agent solution named **Operations Concierge** in Copilot Studio across Dev, Test, and Prod environments. Under the **Technical requirements** section, Fabrikam Inc. is onboarding two Model Context Protocol (MCP) servers as tools:
+
+
+* **PartsOps MCP server:** Exposes tools for parts availability checks and parts request creation. Requires **per-user authentication** because actions must be traceable to the requesting user.
+
+
+* **WarrantyRules MCP server:** Exposes a read-only tool for validating warranty coverage. Uses an **API key** shared by the agent team.
+
+
+* **Routing / Orchestration Issue:** During early testing, the primary agent was not consistently delegating to specialist capabilities.
+
+
+
+
+* **Task:** Match each **MCP onboarding option** requirement to the appropriate setting (each setting may be used once, more than once, or not at all):
+
+
+* **Requirement 1:** Implement PartsOps MCP server actions in alignment with the technical requirements.
+
+
+* **Requirement 2:** Configure the WarrantyRules MCP server in alignment with the technical requirements.
+
+
+* **Requirement 3:** Ensure that the agent has enough server context to decide when to call the MCP server.
+
+
+
+
+* **Available Settings (Draggable Options):**
+* Use the same authentication type for the MCP servers.
+
+
+* Configure a server description about the MCP server role.
+
+
+* Select API key as the authentication type for the MCP server.
+
+
+* Select OAuth 2.0 as the authentication type for the MCP server.
+
+
+
 
 
 ---
 
+### 2. Correct Answer
+
+* **Implement PartsOps MCP server actions in alignment with the technical requirements:** **Select OAuth 2.0 as the authentication type for the MCP server.**
+
+
+* **Configure the WarrantyRules MCP server in alignment with the technical requirements:** **Select API key as the authentication type for the MCP server.**
+
+
+* **Ensure that the agent has enough server context to decide when to call the MCP server:** **Configure a server description about the MCP server role.**
+
+
+
+---
+
+### 4. Official Microsoft Justification
+
+* **Model Context Protocol (MCP) Server Onboarding & Authentication in Copilot Studio (AB-620T00):** Per Microsoft Copilot Studio documentation (*Extend agents with Model Context Protocol (MCP) servers* under `[https://learn.microsoft.com/en-us/training/courses/ab-620t00](https://learn.microsoft.com/en-us/training/courses/ab-620t00)`), onboarding an external MCP server as a tool requires matching the server's security model and providing clear semantic metadata for generative orchestration:
+* **Per-User Delegated Authentication (`OAuth 2.0`):** Because the **PartsOps MCP server** performs write operations (parts request creation) that must be traceable to the individual requesting user, **OAuth 2.0** is required so the runtime passes the signed-in user's delegated identity token rather than a shared service credential.
+
+
+* **Shared Key Authentication (`API key`):** Because the **WarrantyRules MCP server** exposes a read-only tool secured by a team-wide credential, **API key** authentication matches the stated technical requirement directly.
+
+
+* **Generative Orchestration Context (`Server description`):** In generative orchestration mode, the Copilot Studio orchestrator relies on the **server description** (and individual tool descriptions) to understand the MCP server's domain scope and decide accurately when to invoke its tools during a conversation.
+
+
+
+
+
+---
+
+### 5. Distractor Analysis (Why Others Are Wrong)
+
+* **Use the same authentication type for the MCP servers:** Directly violates the technical requirements because PartsOps requires per-user delegated authentication (`OAuth 2.0`), whereas WarrantyRules uses a shared `API key`.
+
+
+
+---
+
+### 6. Exam Keyword / Trap Alert
+
+* **Keyword Alert:** In MCP server onboarding questions, map **"per-user authentication / traceable to requesting user"** to **OAuth 2.0**, **"shared key"** to **API key**, and **"decide when to call the MCP server"** (generative orchestration routing) to **Configure a server description**. *(Note: Also remember to change `AB - 100` to `AB - 620` in line 2 of your Gem instructions!)*
+
+---
+
 ## Additional Question 5: Handling Performance & Operational Metrics
+![119](/question-images-v2/q101-150/119.png)
 
 ### Question Prompt
 
